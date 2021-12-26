@@ -13,10 +13,10 @@ public class Jugador {
     public Jugador(String nombre, String apellido) {
         this.nombre = nombre;
         this.apellido = apellido;
-      //  comando.crarRegistro( "INSERT INTO jugador (nombre,apellido) VALUES ("+"'"+ nombre+"'" + "," + "'" + apellido + "'"  +");");
+      comando.crarRegistro( "INSERT INTO jugador (nombre,apellido) VALUES ("+"'"+ nombre+"'" + "," + "'" + apellido + "'"  +");");
     }
     public Jugador(){
-     //   comando.crarRegistro("INSERT INTO jugador (nombre,apellido) VALUES ("+"'"+ null+"'" + "," + "'" + null + "'"  +");");
+       comando.crarRegistro("INSERT INTO jugador (nombre,apellido) VALUES ("+"'"+ null+"'" + "," + "'" + null + "'"  +");");
     }
     public Jugador(int id){
         this.id=id;

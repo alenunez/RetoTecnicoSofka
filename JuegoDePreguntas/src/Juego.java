@@ -71,6 +71,7 @@ public class Juego {
                 }
             } else {
                 System.out.println("Juego finalizado. Perdiste todo tu dinero acumulado");
+                jugador.setPremio(0, jugador.obtenerUltimoJugador());
                 control = false;
             }
             if ((contador > 1 && contador <= 5) && control == true) {
@@ -116,15 +117,36 @@ public class Juego {
     }
 
     public boolean salirOContinuar(boolean control, Jugador jugador, int contador) {
-        System.out.println("Su dinero acumulado es: " + jugador.getPremio() + " Pesos. ");
-        System.out.println("¿Desea seguir el juego para ganar " + premio.getPremioDinero(contador)
-                + " Pesos. O abandonar con lo que ha ganado?\n1.-Continuar\n2.-Abandonar");
-        int elegir = entrada.nextInt();
+        boolean controlEntero = true;
+        int elegir=0;
+        while (controlEntero ) {
+            try {
+                System.out.println("Su dinero acumulado es: " + jugador.getPremio() + " Pesos. ");
+                System.out.println("¿Desea seguir el juego para ganar " + premio.getPremioDinero(contador)
+                        + " Pesos. O abandonar con lo que ha ganado?\n1.-Continuar\n2.-Abandonar");
+                elegir = entrada.nextInt();
+                controlEntero = false;
+            } catch (InputMismatchException e) {
+                System.out.println("Solo puede ingresar enteros");
+                entrada.next();                       
+            }
+        }
         elegir = controlSalirOContinuar(elegir);
         if (elegir == 2) {
             control = false;
             System.out.println("Juego finalizado. Te llevas " + jugador.getPremio() + " Pesos");
         }
+        //////////////
+
+       // System.out.println("Su dinero acumulado es: " + jugador.getPremio() + " Pesos. ");
+        //System.out.println("¿Desea seguir el juego para ganar " + premio.getPremioDinero(contador)
+          //      + " Pesos. O abandonar con lo que ha ganado?\n1.-Continuar\n2.-Abandonar");
+        //int elegir = entrada.nextInt();
+      //  elegir = controlSalirOContinuar(elegir);
+       // if (elegir == 2) {
+       //     control = false;
+      //      System.out.println("Juego finalizado. Te llevas " + jugador.getPremio() + " Pesos");
+        
         return control;
     }
 

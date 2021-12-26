@@ -8,7 +8,7 @@ public class Connect {
 
     public static Connection connect() {
         // Ruta donde está al db creada
-        String url = "jdbc:sqlite:db/juegoPreguntas.db";
+        String url = "jdbc:sqlite:JuegoDePreguntas/db/juegoPreguntas.db";
         // EJEMPLO: String url =
         // "jdbc:sqlite:C:/Users/KRISTE~1/Documents/MINTIC/CICLO-II/CP_15/CP_15/db/almacen.db";
 

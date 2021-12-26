@@ -13,7 +13,7 @@ public class Ronda {
         this.juego = juego;
         this.categoria = categoria;
         this.respuesta=respuesta;
-     //  comando.crarRegistro("INSERT INTO ronda (pregunta,premio,juego,categoria,respuesta) VALUES ("+pregunta+","+premio+","+juego+","+categoria+","+respuesta+");");
+       comando.crarRegistro("INSERT INTO ronda (pregunta,premio,juego,categoria,respuesta) VALUES ("+pregunta+","+premio+","+juego+","+categoria+","+respuesta+");");
 
     }
     public Ronda(int juego,int categoria){
@@ -23,7 +23,7 @@ public class Ronda {
     }
     public Ronda(int juego){
         this.juego = juego;
-    //    comando.crarRegistro("INSERT INTO ronda (juego) VALUES ("+juego  +");");
+        comando.crarRegistro("INSERT INTO ronda (juego) VALUES ("+juego  +");");
 
     }
 
