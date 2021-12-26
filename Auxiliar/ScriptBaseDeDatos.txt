@@ -1,0 +1,63 @@
+CREATE TABLE categoria (
+    idCategoria INTEGER PRIMARY KEY AUTOINCREMENT
+                        UNIQUE
+                        NOT NULL,
+    nombre      STRING  NOT NULL,
+    nivel       INTEGER NOT NULL
+);
+CREATE TABLE jugador (
+    idJugador INTEGER PRIMARY KEY AUTOINCREMENT
+                      UNIQUE,
+    nombre    STRING,
+    apellido  STRING,
+    premio    DOUBLE
+);
+CREATE TABLE pregunta (
+    idPregunta INTEGER PRIMARY KEY AUTOINCREMENT
+                       UNIQUE
+                       NOT NULL,
+    categoria  INTEGER NOT NULL
+                       REFERENCES categoria (idCategoria),
+    enunciado  STRING  NOT NULL
+);
+CREATE TABLE opciones (
+    idOpcion       INTEGER PRIMARY KEY AUTOINCREMENT
+                           UNIQUE
+                           NOT NULL,
+    enunciado      STRING  NOT NULL,
+    opcionCorrecta INTEGER NOT NULL,
+    pregunta       INTEGER NOT NULL
+                           REFERENCES pregunta (idPregunta) 
+);
+CREATE TABLE premio (
+    idPremio  INTEGER PRIMARY KEY AUTOINCREMENT
+                      UNIQUE
+                      NOT NULL,
+    dinero    DOUBLE  NOT NULL
+                      UNIQUE,
+    categoria INTEGER REFERENCES categoria (idCategoria) 
+                      NOT NULL
+                      UNIQUE
+);
+CREATE TABLE juego (
+    idJuego INTEGER NOT NULL
+                    PRIMARY KEY AUTOINCREMENT,
+    jugador INTEGER REFERENCES jugador (idJugador) 
+);
+CREATE TABLE ronda (
+    idRonda   INTEGER PRIMARY KEY AUTOINCREMENT
+                      NOT NULL
+                      UNIQUE,
+    pregunta  INTEGER REFERENCES pregunta (idPregunta),
+    premio    INTEGER REFERENCES premio (idPremio),
+    juego     INTEGER REFERENCES juego (idJuego),
+    categoria INTEGER REFERENCES categoria (idCategoria),
+    respuesta INT     REFERENCES opciones (idOpcion) 
+);
+CREATE TABLE ganador (
+    idGanador INTEGER PRIMARY KEY AUTOINCREMENT
+                      NOT NULL
+                      UNIQUE,
+    jugador   INTEGER REFERENCES jugador (idJugador) 
+                      NOT NULL
+);
