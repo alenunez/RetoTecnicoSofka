@@ -7,12 +7,15 @@ import java.sql.Statement;
 import src.connection.Connect;
 import java.util.ArrayList;
 
+//En esta clase estan todos los metodos que permiten hacer el crud con la base de datos.
+
 
 public class comandosSql {
 
     public comandosSql() {
     }
 
+    //Este metodo recibe un comando sql para crear un registro en cualquier tabla de la base de datos
     public void crarRegistro(String query) {
         Connect objConexion = new Connect();
         try (Connection conn = objConexion.connect(); Statement stmt = conn.createStatement()) {
@@ -22,6 +25,8 @@ public class comandosSql {
             String alerta = e.getMessage();
         }
     }
+
+    //Este metodo devuelve el id de un juego recibiendo como parametros el nombre y el apellido del jugador
     public int buscarJuegoId(String nombre, String apellido){
         int idJuego = 0;
         Connect objConexion = new Connect();
@@ -34,7 +39,7 @@ public class comandosSql {
         }
         return idJuego;     
     }
-
+    //Este metodo devuelve el id de un jugador recibiendo como parametros el nombre y el apellido del jugador
     public int buscarJugadorId(String nombre, String apellido){
         int idJugador = 0;
         Connect objConexion = new Connect();
@@ -48,7 +53,7 @@ public class comandosSql {
         return idJugador;
     }
 
- 
+    //Este metodo devuelve el enunciado de la pregunta con el id ingresado.
     public void mostrarPreguntaId(int idPregunta){
         String enunciado = "";
         Connect objConexion = new Connect();
@@ -61,7 +66,7 @@ public class comandosSql {
         }
         System.out.println("La pregunta es: "+ enunciado);
     }
-
+    //Este metodo devuelve un ArrayList con todas las preguntas de la base de datos
     public ArrayList preguntas(){
         ArrayList<Pregunta>arreglo = new ArrayList<>();
         Connect objConexion = new Connect();
@@ -81,6 +86,7 @@ public class comandosSql {
         }
         return arreglo;
     }   
+    //Este metodo devuelve un arrayList con todas las opciones de respuestas
     public ArrayList opciones(){
         ArrayList<Opcion>arreglo = new ArrayList<>();
         Connect objConexion = new Connect();
@@ -101,6 +107,7 @@ public class comandosSql {
         }
         return arreglo;
     }  
+    //Este metodo devuelve un arrayList con todos los juegos creados.
     public ArrayList listarJuegos(){
         ArrayList<Juego>arreglo = new ArrayList<>();
         Connect objConexion = new Connect();
@@ -119,6 +126,7 @@ public class comandosSql {
         }
         return arreglo;
     }
+    //Este metodo devuelve el premio correspondiente a la categoria(nivel)ingresado como parametro.
     public int getPremio(int categoria){
         int idPremio = 0;
         Connect objConexion = new Connect();
@@ -131,7 +139,7 @@ public class comandosSql {
         }
         return idPremio;
     }
-
+    //Este metodo permite actualizar cualquier registro de la base de datos recibiendo como parámetro el comando sql
     public void actualizar(String sql){
         Connect objConexion = new Connect();
         try (Connection conn = Connect.connect(); Statement stmt = conn.createStatement()) {
@@ -140,7 +148,7 @@ public class comandosSql {
             System.err.println(e.getMessage());
         }
     }
-
+    //Este metodo devuelve un ArrayList con todos los jugadores creados.
     public ArrayList listarJugadores(){
         ArrayList<Jugador>arreglo = new ArrayList<>();
         Connect objConexion = new Connect();
@@ -158,6 +166,7 @@ public class comandosSql {
         }
         return arreglo;
     }
+    //Este metodo devuelve un ArrayList con todos los premios.
     public ArrayList listarPremios(){
         ArrayList<Premio>arreglo = new ArrayList<>();
         Connect objConexion = new Connect();

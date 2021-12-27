@@ -61,11 +61,13 @@ public class Opcion {
     public void setIdOpcion(int idOpcion) {
         this.idOpcion = idOpcion;
     }
-
+    //Este metodo llena el arrayList listaOpciones con todas las opciones de la base de datos
     public void listarOpciones() {
         listaOpciones = comando.opciones();
     }
-
+    //Este metodo muestra las opciones de respuesta de la pregunta seleccionada recibiendo como parametro el id de la pregunta
+   //Primero se llena la listaOpcionesPorPregunta y luego se llama el metodo mostrar opciones que es el encargado de
+   //mostrar en consola las opciones
     public void seleccionarPorPregunta(int pregunta) {
         listarOpciones();
         for (int i = 0; i < listaOpciones.size(); i++) {
@@ -75,13 +77,13 @@ public class Opcion {
         }
         mostrarOpciones();
     }
-
+    //Este metodo muestra en consola las opciones 
     public void mostrarOpciones() {
         for (int i = 0; i < listaOpcionesPorPregunta.size(); i++) {
             System.out.println("Opcion N°" + (i + 1) + " "+listaOpcionesPorPregunta.get(i).getEnunciado());
         }
     }
-
+    //Este metodo recibe como parametro la opcion que eligió el jugador y devuelte true si es correcta o false si es incorrecta
     public boolean verificarRespuesta(int respuesta) {
         boolean opcion=false;
         for (int i = 0; i < listaOpcionesPorPregunta.size(); i++) {
@@ -92,9 +94,11 @@ public class Opcion {
                 }
             }
         }
-        listaOpcionesPorPregunta.clear();
+        listaOpcionesPorPregunta.clear(); 
         return opcion;
     }
+    //Este metodo limpia la lista listaOpcionesPorPregunta
+    // para que cuando el jugador pase de ronda solo le muestre las opciones correspondientes a la nueva pregunta
     public void limpiarListaDeOpciones(){
         listaOpcionesPorPregunta.clear();
     }

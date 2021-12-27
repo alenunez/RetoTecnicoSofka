@@ -49,11 +49,13 @@ public class Pregunta {
     public void setEnunciado(String enunciado) {
         this.enunciado = enunciado;
     }
+    //Este metodo devuelve un número aleatorio entre 0 y la cantidad de preguntas por categoria
     public int generarAleatorio(){
         Random aleatorio = new Random();
         int idPregunta = aleatorio.nextInt(listaPreguntasPorCategoria.size());
         return idPregunta;
     }
+    //Este metodo pemite seleccionar una pregunta de forma aleatoria de una categoria y devuelve su id.
     public int seleccionarPregunta(){
         int aleatorio = generarAleatorio();
         int idPregunta=0;
@@ -64,7 +66,7 @@ public class Pregunta {
         }
         return idPregunta;
     }
-
+    //Este metodo muestra la pregunta que fue seleccionada aleatoriamente y también devuelve su id.
     public int mostrarPregunta(int categoria){
         listarPreguntasPorCategoria(categoria);
         int idPregunta = seleccionarPregunta();
@@ -73,7 +75,7 @@ public class Pregunta {
         return idPregunta;     
     }
     
-
+    //Este metodo llena un ArrayList de las preguntas de una categoria en especifico
     public void listarPreguntasPorCategoria(int categoria){
         listarPreguntas();
         for(int i = 0;i<listaPreguntas.size();i++){
@@ -84,6 +86,7 @@ public class Pregunta {
 
         
     }
+    //Este metodo llena el ArrayList listareguntas con todas las preguntas de la base de datos.
     public void listarPreguntas(){
         listaPreguntas = comando.preguntas();
     }

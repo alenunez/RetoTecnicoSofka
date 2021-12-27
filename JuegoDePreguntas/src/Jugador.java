@@ -51,9 +51,12 @@ public class Jugador {
         comando.actualizar( "UPDATE jugador  SET premio = '" + premio + "'WHERE idJugador = " + idJugador + ";");
 
     }
+    //Este meotodo llama a la clase comandoSQL para hacer una lista de todos los jugadores de la base de datos
     public void listarJugadores(){
         listaDeJugadores= comando.listarJugadores();
     }
+    //Este metodo devuelve el ultimo jugador que se creó en la base de datos ya que en la clase Juego primero se crea el jugador y
+    // luego el juego y se nececita el id del jugador actual(Que seria el ultimo creado)
     public int obtenerUltimoJugador(){
         listarJugadores();
         int idUltimoJugador = listaDeJugadores.get(listaDeJugadores.size()-1).getId();
